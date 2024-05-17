@@ -1,0 +1,15 @@
+<div class="row">
+
+ <div class="col-sm-6">
+    <button (click)="mostrarFormu()">Mostrar Formulario</button>
+ </div>
+
+ <div class="col-sm-6" [formGroup]="Formulario">
+    <input formControlName = 'nombre' type="text" formControlName="nombre">
+ </div>
+
+</div>
+
+ <app-formulario-usu *ngIf="bandera" [valor]="this.Formulario.get('nombre')?.value"></app-formulario-usu> <!-- aqui se llama un componente  -->
+
+ 

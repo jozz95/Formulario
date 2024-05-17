@@ -1,0 +1,48 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" (click)="abrirModal()">
+    Nuevo
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        </div>
+        <div class="modal-body">
+            <form class="row g-2 fontText">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label"><b>Nombre:</b></label>
+                  <input [value]="valor" type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre"  />
+                </div>
+                <div class="col-md-6">
+                  <label for="edad" class="form-label"><b>Edad:</b></label>
+                  <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad" />
+                </div>
+                <div class="col-md-4">
+                  <label for="sexo" class="form-label"><b>Sexo:</b></label>
+                  <input type="text" class="form-control" id="sexo" placeholder="Ingrese su genero"  />
+                </div>
+                <div class="col-md-4">
+                  <label for="telefono" class="form-label"><b>Telefono:</b></label>
+                  <input type="number" class="form-control" id="telefono" placeholder="Ingrese su telefono"  />
+                </div>
+                <div class="col-md-4">
+                  <label for="lugar" class="form-label"><b>Lugar:</b></label>
+                  <input type="text" class="form-control" id="lugar" placeholder="Ingrese su dirección"  />
+                </div>
+                <div class="col-md-12">
+                  <label for="referencia" class="form-label"><b>Referencia:</b></label>
+                  <input type="text" class="form-control" id="referencia" placeholder="Ingrese una referencia"  />
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="abrirModal()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

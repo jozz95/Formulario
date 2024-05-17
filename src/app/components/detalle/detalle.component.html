@@ -1,0 +1,109 @@
+<!-- row acomoda todo en columnas -->
+<div class="row centerItems">
+    <div class="col-8">
+      &nbsp;
+      <h1 class="alingText fontText"><b>Administración De Usuario</b></h1>
+      &nbsp;
+      <ngx-toast-notifier></ngx-toast-notifier>
+      <div class="col-12">
+        <button type="submit" class="btn btn-danger fontTextbtn" (click)="reset()" (click)="addWarning()">Reset</button>
+        &nbsp;
+        <button type="submit" class="btn btn-primary fontTextbtn" (click)="ejecutar1()">Mostrar Tabla</button>
+        &nbsp;
+        <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()" (click)="addDanger()">Agregar al Formulario</button>
+        &nbsp;
+        <hr>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <form class="row g-2 fontText" *ngIf="bandera" [formGroup]="Formulario">
+        <div class="col-md-6">
+          <label for="nombre" class="form-label"><b>Nombre:</b></label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" />
+          <!--este es el mensaje de validacion -->
+          <div *ngIf="Formulario.get('nombre')?.invalid && (Formulario.get('nombre')?.dirty || Formulario.get('nombre')?.touched)">
+            <div *ngIf="Formulario.get('nombre')?.errors && Formulario.get('nombre')?.errors?.['required']">
+              *El nombre es obligatorio.
+            </div>          
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="edad" class="form-label"><b>Edad:</b></label>
+          <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad" formControlName="edad" />
+        </div>
+        <div class="col-md-4">
+          <label for="sexo" class="form-label"><b>Sexo:</b></label>
+          <input type="text" class="form-control" id="sexo" placeholder="Ingrese su genero" formControlName="sexo" />
+        </div>
+        <div class="col-md-4">
+          <label for="telefono" class="form-label"><b>Telefono:</b></label>
+          <input type="number" class="form-control" id="telefono" placeholder="Ingrese su telefono" formControlName="telefono" />
+        </div>
+        <div class="col-md-4">
+          <label for="lugar" class="form-label"><b>Lugar:</b></label>
+          <input type="text" class="form-control" id="lugar" placeholder="Ingrese su dirección" formControlName="lugar" />
+        </div>
+        <div class="col-md-12">
+          <label for="referencia" class="form-label"><b>Referencia:</b></label>
+          <input type="text" class="form-control" id="referencia" placeholder="Ingrese una referencia" formControlName="referencia" />
+        </div>
+        <div class="col-md-12 bgprevia" 
+        *ngIf="this.Formulario.get('nombre')?.value !='' ||
+        this.Formulario.get('edad')?.value !='' ||
+        this.Formulario.get('sexo')?.value !='' ||
+        this.Formulario.get('telefono')?.value !='' ||
+        this.Formulario.get('lugar')?.value !='' ||
+        this.Formulario.get('referencia')?.value !=''
+        ">
+          <h2><b>Previa del Registro:</b></h2>
+          <label for="nombre" class="form-label"><b>{{this.Formulario.get('nombre')?.value}}</b></label>
+          &nbsp;
+          <label for="edad" class="form-label"><b>{{this.Formulario.get('edad')?.value}}</b></label>
+          &nbsp;
+          <label for="sexo" class="form-label"><b>{{this.Formulario.get('sexo')?.value}}</b></label>
+          &nbsp;
+          <label for="telefono" class="form-label"><b>{{this.Formulario.get('telefono')?.value}}</b></label>
+          &nbsp;
+          <label for="lugar" class="form-label"><b>{{this.Formulario.get('lugar')?.value}}</b></label>
+          &nbsp;
+          <label for="referencia" class="form-label"><b>{{this.Formulario.get('referencia')?.value}}</b></label>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary fontTextbtn" (click)="agregar()" (click)="limpiarCampos()" (click)="ejecutar1()"
+          (click)="ejecutar3()" (click)="addSuccess()">
+            Agregar Registro</button>
+            &nbsp;
+            <button type="submit" class="btn btn-info fontTextbtn" (click)="limpiarCampos()" (click)="ejecutar3()" (click)="addInfo()">
+              Limpiar Formulario</button>
+        </div>
+      </form>
+      <hr>
+      <div class="col-12 fontText" *ngIf="bandera1">
+        <table class="table table-striped alingText">
+          <thead>
+            <tr>
+              <th class="bgtable" scope="col">#</th>
+              <th class="bgtable" scope="col">Nombre</th>
+              <th class="bgtable" scope="col">Edad</th>
+              <th class="bgtable" scope="col">Sexo</th>
+              <th class="bgtable" scope="col">Telefono</th>
+              <th class="bgtable" scope="col">Lugar</th>
+              <th class="bgtable" scope="col">Referencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dato of listDatos">
+              <th scope="row">{{dato.no}}</th>
+              <td>{{dato.nombre}}</td>
+              <td>{{dato.edad}}</td>
+              <td>{{dato.sexo}}</td>
+              <td>{{dato.telefono}}</td>
+              <td>{{dato.lugar}}</td>
+              <td>{{dato.referencia}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+      </div>
+    </div>
+  </div>
