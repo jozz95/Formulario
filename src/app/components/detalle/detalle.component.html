@@ -2,7 +2,7 @@
 <div class="row centerItems">
     <div class="col-8">
       &nbsp;
-      <h1 class="alingText fontText"><b>Administración De UsuarioSSSSS</b></h1>
+      <h1 class="alingText fontText"><b>Administración De Usuarios</b></h1>
       &nbsp;
       <ngx-toast-notifier></ngx-toast-notifier>
       <div class="col-12">
@@ -10,7 +10,7 @@
         &nbsp;
         <button type="submit" class="btn btn-primary fontTextbtn" (click)="ejecutar1()">Mostrar Tabla</button>
         &nbsp;
-        <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()" (click)="addDanger()">Agregar al Formulario</button>
+        <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()">Agregar al Formulario</button>
         &nbsp;
         <hr>
       </div>
@@ -69,8 +69,7 @@
           <label for="referencia" class="form-label"><b>{{this.Formulario.get('referencia')?.value}}</b></label>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary fontTextbtn" (click)="agregar()" (click)="limpiarCampos()" (click)="ejecutar1()"
-          (click)="ejecutar3()" (click)="addSuccess()">
+          <button type="submit" class="btn btn-primary fontTextbtn" (click)="abrirModal()">
             Agregar Registro</button>
             &nbsp;
             <button type="submit" class="btn btn-info fontTextbtn" (click)="limpiarCampos()" (click)="ejecutar3()" (click)="addInfo()">
@@ -79,6 +78,7 @@
       </form>
       <hr>
       <div class="col-12 fontText" *ngIf="bandera1">
+        <h1 class="centerItems fontText"><b>Tabla de registros</b></h1>
         <table class="table table-striped alingText">
           <thead>
             <tr>
@@ -107,3 +107,26 @@
       </div>
     </div>
   </div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Guardar Nuevo Uusario?</h1>
+      </div>
+      <div class="modal-body">
+          <form class="row g-2 fontText">
+              <div class="col-md-6">
+                <label class="form-label"><b>Desea usted Guardar la información</b></label>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCampos()" (click)="ejecutar3()" (click)="addInfo()" (click)="abrirModal()">No</button>
+        <button (click)="agregar()" (click)="limpiarCampos()" (click)="ejecutar1()"
+        (click)="ejecutar3()" (click)="addSuccess()" (click)="abrirModal()" type="button" class="btn btn-primary">Si</button>
+      </div>
+    </div>
+  </div>
+</div>

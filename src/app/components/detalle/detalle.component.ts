@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxToastService } from 'ngx-toast-notifier';
 
@@ -8,6 +8,10 @@ import { NgxToastService } from 'ngx-toast-notifier';
   styleUrls: ['./detalle.component.css'],
 })
 export class DetalleComponent {
+
+  @Input() valor: string = '';
+  mostrar: boolean = false;
+
   Formulario!: FormGroup;
   bandera: boolean = false;
   bandera1: boolean = false;
@@ -112,4 +116,9 @@ export class DetalleComponent {
       this.Formulario.get('lugar')?.setValue(''),
       this.Formulario.get('referencia')?.setValue('');
   }
+
+  abrirModal(){
+    this.mostrar = !this.mostrar;
+  }
+
 }
