@@ -14,7 +14,6 @@ export class FormularioUsuComponent {
   Formulario!: FormGroup;
   bandera: boolean = false;
   bandera1: boolean = false;
-  bandera2: boolean = false;
   listDatos = [
     {
       no: 1,
@@ -33,6 +32,8 @@ export class FormularioUsuComponent {
     this.crearFormulario(); //se ejectuta al arrancar el servicio la funcion crearformulario para cargarlo al inicio
   }
 
+
+//alertas
   addSuccess(): void {
     this.notiSvc.onSuccess(
       'Guardado Exítoso',
@@ -58,8 +59,8 @@ export class FormularioUsuComponent {
     this.notiSvc.onDanger('No se Guardo el Registro', 'Guardado Incorrecto');
   }
 
+  //se crea una funcion que diseña los campos de un formulario
   crearFormulario() {
-    //se crea una funcion que diseña los campos de un formulario
     this.Formulario = this.fb.group({
       nombre: ['', [Validators.required]],
       edad: ['', [Validators.required]],
@@ -78,23 +79,8 @@ export class FormularioUsuComponent {
     this.bandera1 = !this.bandera1; //bandera para ocultar la tabla
   }
 
-  ejecutar2() {
-    this.bandera2 = !this.bandera2; //bandera para ocultar la previa
-  }
-
-  ejecutar3() {
-    this.bandera2 = false; //bandera para ocultar la previa
-  }
-
-  reset() {
-    //resetea las banderas para que se oculten los objetos
-    this.bandera = false;
-    this.bandera1 = false;
-    this.bandera2 = false;
-  }
-
+  //funcion que inserta en el arreglo los datos según sus campos
   agregar() {
-    //funcion que inserta en el arreglo los datos según sus campos
     this.index = this.index + 1;
     this.listDatos.push({
       no: this.index,
@@ -118,11 +104,11 @@ export class FormularioUsuComponent {
 
   abrirModal(){
     this.mostrar = !this.mostrar;
+    this.bandera1 = !this.bandera1;
   }
 
-
-
-
-
+  ocultarModal(){
+    this.mostrar = !this.mostrar;
+  }
 
 }

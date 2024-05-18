@@ -5,28 +5,26 @@
     <h1 class="alingText fontText"><b>Administración De Usuarios</b></h1>
     &nbsp;
     <ngx-toast-notifier></ngx-toast-notifier>
-    <div class="col-12">
-      <button type="submit" class="btn btn-danger fontTextbtn" (click)="reset()" (click)="addWarning()">Reset</button>
-      &nbsp;
-      <button type="submit" class="btn btn-primary fontTextbtn" (click)="ejecutar1()">Mostrar Tabla</button>
-      &nbsp;
-      <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()">Agregar al Formulario</button>
-      &nbsp;
-      <hr>
-    </div>
+    &nbsp;
+    <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()">Agregar Nuevo Usuario</button>
+    &nbsp;
   </div>
   <div class="col-md-8">
     <form class="row g-2 fontText" *ngIf="bandera" [formGroup]="Formulario">
+
       <div class="col-md-6">
         <label for="nombre" class="form-label"><b>Nombre:</b></label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" />
+        
         <!--este es el mensaje de validacion -->
         <div *ngIf="Formulario.get('nombre')?.invalid && (Formulario.get('nombre')?.dirty || Formulario.get('nombre')?.touched)">
           <div *ngIf="Formulario.get('nombre')?.errors && Formulario.get('nombre')?.errors?.['required']">
             *El nombre es obligatorio.
           </div>          
-        </div>
+        </div> 
+
       </div>
+
       <div class="col-md-6">
         <label for="edad" class="form-label"><b>Edad:</b></label>
         <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad" formControlName="edad" />
@@ -47,13 +45,14 @@
         <label for="referencia" class="form-label"><b>Referencia:</b></label>
         <input type="text" class="form-control" id="referencia" placeholder="Ingrese una referencia" formControlName="referencia" />
       </div>
+
       <div class="col-md-12 bgprevia" 
-      *ngIf="this.Formulario.get('nombre')?.value !='' ||
-      this.Formulario.get('edad')?.value !='' ||
-      this.Formulario.get('sexo')?.value !='' ||
-      this.Formulario.get('telefono')?.value !='' ||
-      this.Formulario.get('lugar')?.value !='' ||
-      this.Formulario.get('referencia')?.value !=''
+        *ngIf="this.Formulario.get('nombre')?.value !='' ||
+        this.Formulario.get('edad')?.value !='' ||
+        this.Formulario.get('sexo')?.value !='' ||
+        this.Formulario.get('telefono')?.value !='' ||
+        this.Formulario.get('lugar')?.value !='' ||
+        this.Formulario.get('referencia')?.value !=''
       ">
         <h2><b>Previa del Registro:</b></h2>
         <label for="nombre" class="form-label"><b>{{this.Formulario.get('nombre')?.value}}</b></label>
@@ -69,16 +68,16 @@
         <label for="referencia" class="form-label"><b>{{this.Formulario.get('referencia')?.value}}</b></label>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary fontTextbtn" (click)="abrirModal()">
+        <button type="submit" class="btn btn-primary fontTextbtn" (click)="abrirModal()" (click)="ejecutar()">
           Agregar Registro</button>
           &nbsp;
-          <button type="submit" class="btn btn-info fontTextbtn" (click)="limpiarCampos()" (click)="ejecutar3()" (click)="addInfo()">
+          <button type="submit" class="btn btn-info fontTextbtn" (click)="limpiarCampos()" (click)="addInfo()">
             Limpiar Formulario</button>
       </div>
     </form>
     <hr>
-    <div class="col-12 fontText" *ngIf="bandera1">
-      <h1 class="centerItems fontText"><b>Tabla de registros</b></h1>
+    <div class="col-12 fontText" *ngIf="!bandera1">
+      <h1 class="centerItems fontText"><b>Registros de Usuarios</b></h1>
       <table class="table table-striped alingText">
         <thead>
           <tr>
@@ -109,7 +108,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+<div class=" modal modal-dialog modal-dialog-centered" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
@@ -123,9 +122,9 @@
           </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCampos()" (click)="ejecutar3()" (click)="addInfo()" (click)="abrirModal()">No</button>
-      <button (click)="agregar()" (click)="limpiarCampos()" (click)="ejecutar1()"
-      (click)="ejecutar3()" (click)="addSuccess()" (click)="abrirModal()" type="button" class="btn btn-primary">Si</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCampos()" (click)="addInfo()" (click)="abrirModal()">No</button>
+
+      <button (click)="agregar()" (click)="limpiarCampos()" (click)="addSuccess()" (click)="ejecutar1()" (click)="ocultarModal()" type="button" class="btn btn-primary">Si</button>
     </div>
   </div>
 </div>
