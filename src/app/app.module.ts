@@ -6,17 +6,15 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxToastNotifierModule} from "ngx-toast-notifier";
-import { LoginComponent } from './components/login/login.component';
-import { DetalleComponent } from './components/detalle/detalle.component';
 import { FormularioUsuComponent } from './components/formulario-usu/formulario-usu.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DetalleComponent,
-    FormularioUsuComponent
+    FormularioUsuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

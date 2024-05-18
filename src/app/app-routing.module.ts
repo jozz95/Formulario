@@ -1,33 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { DetalleComponent } from './components/detalle/detalle.component';
+import { FormularioUsuComponent } from './components/formulario-usu/formulario-usu.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',// te manda a una ruta principal en caso de venir vacia la ruta
+    redirectTo: 'home',// te manda a una ruta principal en caso de venir vacia la ruta
 },
-//{ path:'**', redirectTo: 'login' }, // te manda a una ruta principal en caso de escribir una ruta fallida
+//{ path:'**', redirectTo: 'home' }, // te manda a una ruta principal en caso de escribir una ruta fallida
 {
-    path: 'login',
+    path: 'home', //redirige al componente home
     canActivate: [],
-    component: LoginComponent,
+    component: HomeComponent,
 
 },
 {
-  path: 'login2',
-  canActivate: [],
-  component: LoginComponent,
-
-},
-{
-    path: 'detalle', //muestra la ruta de la pagina principal
+    path: 'formUsu', //muestra la ruta del formulario de usuarios
     canActivate: [],
-    component: DetalleComponent,
+    component: FormularioUsuComponent,
   
-    }
+}
+
 ];
 
 @NgModule({
