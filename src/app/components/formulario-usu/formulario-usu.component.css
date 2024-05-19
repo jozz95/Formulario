@@ -16,6 +16,10 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.btnmarg{
+    padding-top: 20;
+}
+
 .bgtable{
     background-color: rgb(131, 12, 62);
     color: aliceblue;
@@ -25,4 +29,30 @@
     background-color: rgb(25, 26, 88);
     color: rgb(255, 255, 255);
 }
+
+.bgc{
+    background-color: #f392f0;
+    color: azure;
+    border-bottom-left-radius: 20px;
+}
+
+/* Aplica una sombra suave */
+.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Aplica una sombra más pronunciada */
+  .heavy-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Aplica una sombra en relieve */
+  .outset-shadow {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Aplica una sombra interna */
+  .inset-shadow {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 

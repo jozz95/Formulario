@@ -1,0 +1,12 @@
+.bgc{
+    background-color: #f392f0;
+    color: azure;
+    border-bottom-left-radius: 20px;
+    height: 40px;
+}
+
+/* Aplica una sombra suave */
+.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

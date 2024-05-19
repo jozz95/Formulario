@@ -40,23 +40,22 @@ export class FormularioUsuComponent {
       'Su registro se Ingreso Correctamente'
     );
   }
-
   addInfo(): void {
     this.notiSvc.onInfo(
       'Limpieza Realizada',
       'Se limpiaron todos los campos correctamente'
     );
   }
-
   addWarning(): void {
     this.notiSvc.onWarning(
       'Se dio un reset a el sistema',
       'Se actualizarón los estatus'
     );
   }
-
   addDanger(): void {
-    this.notiSvc.onDanger('No se Guardo el Registro', 'Guardado Incorrecto');
+    this.notiSvc.onDanger(
+      'No se Guardo el Registro', 'Guardado Incorrecto'
+    );
   }
 
   //se crea una funcion que diseña los campos de un formulario
@@ -65,7 +64,7 @@ export class FormularioUsuComponent {
       nombre: ['', [Validators.required]],
       edad: ['', [Validators.required]],
       sexo: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
+      telefono: ['', [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
       lugar: ['', [Validators.required]],
       referencia: ['', [Validators.required]],
     });

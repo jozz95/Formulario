@@ -15,7 +15,6 @@ const routes: Routes = [
     path: 'home', //redirige al componente home
     canActivate: [],
     component: HomeComponent,
-
 },
 {
     path: 'formUsu', //muestra la ruta del formulario de usuarios

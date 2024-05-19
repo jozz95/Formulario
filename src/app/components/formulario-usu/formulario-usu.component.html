@@ -6,7 +6,7 @@
     &nbsp;
     <ngx-toast-notifier></ngx-toast-notifier>
     &nbsp;
-    <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()">Agregar Nuevo Usuario</button>
+    <button type="submit" class="btn btn-success fontTextbtn" (click)="ejecutar()" (click)="limpiarCampos()">Agregar Nuevo Usuario</button>
     &nbsp;
   </div>
   <div class="col-md-8">
@@ -15,14 +15,12 @@
       <div class="col-md-6">
         <label for="nombre" class="form-label"><b>Nombre:</b></label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" />
-        
-        <!--este es el mensaje de validacion -->
-        <div *ngIf="Formulario.get('nombre')?.invalid && (Formulario.get('nombre')?.dirty || Formulario.get('nombre')?.touched)">
-          <div *ngIf="Formulario.get('nombre')?.errors && Formulario.get('nombre')?.errors?.['required']">
-            *El nombre es obligatorio.
-          </div>          
-        </div> 
-
+          <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+          <div *ngIf="Formulario.get('nombre')?.invalid && (Formulario.get('nombre')?.dirty || Formulario.get('nombre')?.touched)">
+            <div class="alert alert-danger mt-1" *ngIf="Formulario.get('nombre')?.errors requiere">
+              Este campo es Obligatorio.
+            </div>
+          </div>
       </div>
 
       <div class="col-md-6">
@@ -35,8 +33,21 @@
       </div>
       <div class="col-md-4">
         <label for="telefono" class="form-label"><b>Telefono:</b></label>
-        <input type="number" class="form-control" id="telefono" placeholder="Ingrese su telefono" formControlName="telefono" />
+        <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su telefono" formControlName="telefono" />
+                  <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+            <div class="alert alert-danger mt-1" *ngIf="Formulario.get('telefono')?.invalid && (Formulario.get('telefono')?.dirty || Formulario.get('telefono')?.touched)">
+                <div *ngIf="Formulario.get('telefono')?.errors required">
+                  Teléfono es obligatorio.
+                </div>
+                  <div *ngIf="Formulario.get('telefono')?.errors minlength">
+                    Teléfono debe tener al menos 10 caracteres.
+                  </div>
+                <div *ngIf="Formulario.get('telefono')?.errors maxlength">
+                  Teléfono no debe tener más de 10 caracteres.
+                </div>
+            </div>
       </div>
+
       <div class="col-md-4">
         <label for="lugar" class="form-label"><b>Lugar:</b></label>
         <input type="text" class="form-control" id="lugar" placeholder="Ingrese su dirección" formControlName="lugar" />
@@ -108,23 +119,41 @@
 </div>
 
 <!-- Modal -->
-<div class=" modal modal-dialog modal-dialog-centered" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+<div class=" modal-lg modal modal-dialog modal-dialog-centered" tabindex="-1" [ngClass]="{'show': mostrar}" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
 <div class="modal-dialog">
   <div class="modal-content">
-    <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Guardar Nuevo Uusario?</h1>
+    <div class="modal-header d-flex justify-content-center align-items-center bgc shadow">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Guardar Nuevo Usario?</h1>
     </div>
     <div class="modal-body">
         <form class="row g-2 fontText">
-            <div class="col-md-6">
-              <label class="form-label"><b>Desea usted Guardar la información</b></label>
+            <div class="col-md-12 text-center">
+              <label class="form-label"><h4><b>Datos Previamente Capturados:</b></h4></label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Nombre: </b>{{this.Formulario.get('nombre')?.value}}</label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Edad: </b>{{this.Formulario.get('edad')?.value}}</label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Sexo: </b>{{this.Formulario.get('sexo')?.value}}</label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Telefono: </b>{{this.Formulario.get('telefono')?.value}}</label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Lugar: </b>{{this.Formulario.get('lugar')?.value}}</label>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label"><b>Referencia: </b>{{this.Formulario.get('referencia')?.value}}</label>
             </div>
           </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCampos()" (click)="addInfo()" (click)="abrirModal()">No</button>
 
-      <button (click)="agregar()" (click)="limpiarCampos()" (click)="addSuccess()" (click)="ejecutar1()" (click)="ocultarModal()" type="button" class="btn btn-primary">Si</button>
+      <button (click)="agregar()" (click)="addSuccess()" (click)="ejecutar1()" (click)="ocultarModal()" (click)="limpiarCampos()" type="button" class="btn btn-primary">Si</button>
     </div>
   </div>
 </div>
