@@ -103,7 +103,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let dato of listDatos">
+          <tr *ngFor="let dato of listDatos let i = index">
             <th scope="row">{{dato.no}}</th>
             <td>{{dato.nombre}}</td>
             <td>{{dato.edad}}</td>
@@ -111,7 +111,8 @@
             <td>{{dato.telefono}}</td>
             <td>{{dato.lugar}}</td>
             <td>{{dato.referencia}}</td>
-            <td><button class="btn btn-danger">Eliminar</button></td>
+            <td><button (click)="actualizarRegistro()" class="btn btn-sm btn-info">Actualizar</button>&nbsp;
+              <button (click)="eliminarRegistro(i)" class="btn btn-sm btn-danger">Eliminar</button></td>
           </tr>
         </tbody>
       </table>

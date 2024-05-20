@@ -6,9 +6,9 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false">
-            <b>Citada #</b>{{dato.no}} &nbsp;
-            <b>Fecha:</b> {{dato.fecha}} &nbsp;
-            <b>Hora: </b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
+            <b>Cita No:&nbsp;</b>{{dato.no}} &nbsp;
+            <b>Fecha:&nbsp;</b> {{dato.fecha}} &nbsp;
+            <b>Hora:&nbsp;</b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
             <button class="btn btn-sm btn-close" (click)="eliminar(i)"></button>
           </button>
         </h2>

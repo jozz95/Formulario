@@ -32,32 +32,6 @@ export class FormularioUsuComponent {
     this.crearFormulario(); //se ejectuta al arrancar el servicio la funcion crearformulario para cargarlo al inicio
   }
 
-
-//alertas
-  addSuccess(): void {
-    this.notiSvc.onSuccess(
-      'Guardado Exítoso',
-      'Su registro se Ingreso Correctamente'
-    );
-  }
-  addInfo(): void {
-    this.notiSvc.onInfo(
-      'Limpieza Realizada',
-      'Se limpiaron todos los campos correctamente'
-    );
-  }
-  addWarning(): void {
-    this.notiSvc.onWarning(
-      'Se dio un reset a el sistema',
-      'Se actualizarón los estatus'
-    );
-  }
-  addDanger(): void {
-    this.notiSvc.onDanger(
-      'No se Guardo el Registro', 'Guardado Incorrecto'
-    );
-  }
-
   //se crea una funcion que diseña los campos de un formulario
   crearFormulario() {
     this.Formulario = this.fb.group({
@@ -68,6 +42,15 @@ export class FormularioUsuComponent {
       lugar: ['', [Validators.required]],
       referencia: ['', [Validators.required]],
     });
+  }
+
+  limpiarCampos() {
+    this.Formulario.get('nombre')?.setValue(''),
+      this.Formulario.get('edad')?.setValue(''),
+      this.Formulario.get('sexo')?.setValue(''),
+      this.Formulario.get('telefono')?.setValue(''),
+      this.Formulario.get('lugar')?.setValue(''),
+      this.Formulario.get('referencia')?.setValue('');
   }
 
   ejecutar() {
@@ -92,23 +75,48 @@ export class FormularioUsuComponent {
     });
   }
 
-  limpiarCampos() {
-    this.Formulario.get('nombre')?.setValue(''),
-      this.Formulario.get('edad')?.setValue(''),
-      this.Formulario.get('sexo')?.setValue(''),
-      this.Formulario.get('telefono')?.setValue(''),
-      this.Formulario.get('lugar')?.setValue(''),
-      this.Formulario.get('referencia')?.setValue('');
-  }
+eliminarRegistro(indexR: number) {
+    this.listDatos.splice(indexR, 1);
+}
 
-  abrirModal(){
-    this.mostrar = !this.mostrar;
-    this.bandera1 = !this.bandera1;
-  }
+actualizarRegistro(){
+  
+}
 
-  ocultarModal(){
-    this.mostrar = !this.mostrar;
-  }
+//modal
+abrirModal(){
+  this.mostrar = !this.mostrar;
+  this.bandera1 = !this.bandera1;
+}
+
+ocultarModal(){
+  this.mostrar = !this.mostrar;
+}
+
+//alertas
+addSuccess(): void {
+  this.notiSvc.onSuccess(
+    'Guardado Exítoso',
+    'Su registro se Ingreso Correctamente'
+  );
+}
+addInfo(): void {
+  this.notiSvc.onInfo(
+    'Limpieza Realizada',
+    'Se limpiaron todos los campos correctamente'
+  );
+}
+addWarning(): void {
+  this.notiSvc.onWarning(
+    'Se dio un reset a el sistema',
+    'Se actualizarón los estatus'
+  );
+}
+addDanger(): void {
+  this.notiSvc.onDanger(
+    'No se Guardo el Registro', 'Guardado Incorrecto'
+  );
+}
 
 
 }

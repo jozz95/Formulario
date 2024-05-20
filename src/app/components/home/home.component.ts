@@ -48,6 +48,10 @@ export class HomeComponent {
     });
   }
 
+  eliminar(indexR: number) {
+    this.listRecord.splice(indexR, 1);
+  }
+
   limpiarCampos() {
     this.Fconsult.get('nombre')?.setValue(''),
       this.Fconsult.get('fecha')?.setValue(''),
@@ -81,9 +85,5 @@ export class HomeComponent {
     const formattedMinute = parsedMinute < 10 ? '0' + parsedMinute : parsedMinute;
     return `${formattedHour}:${formattedMinute} ${period}`;
   }
-
-  eliminar(indexR: number) {
-    this.listRecord.splice(indexR, 1);
-  }
-
+  
 }
