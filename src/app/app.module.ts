@@ -10,6 +10,7 @@ import { FormularioUsuComponent } from './components/formulario-usu/formulario-u
 import { HomeComponent } from './components/home/home.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgxToastNotifierModule.forRoot({
-      timeOut: 10500,
+      timeOut: 1000,
       bgColors: {
        success: '#54a254',
        info: '#1976d2',
@@ -31,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
        danger: '#da2d2d',
       }
     }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

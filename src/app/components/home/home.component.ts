@@ -70,5 +70,20 @@ export class HomeComponent {
     );
   }
 
+   // Esta función formatea la hora a un formato de 12 horas
+   formatHoraTo12Hour(hora: string): string {
+    if (!hora) return '';
+    const [hour, minute] = hora.split(':');
+    const parsedHour = parseInt(hour);
+    const parsedMinute = parseInt(minute);
+    const period = parsedHour >= 12 ? 'PM' : 'AM';
+    const formattedHour = parsedHour % 12 === 0 ? 12 : parsedHour % 12;
+    const formattedMinute = parsedMinute < 10 ? '0' + parsedMinute : parsedMinute;
+    return `${formattedHour}:${formattedMinute} ${period}`;
+  }
+
+  eliminar(indexR: number) {
+    this.listRecord.splice(indexR, 1);
+  }
 
 }

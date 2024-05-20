@@ -8,7 +8,8 @@
           <button class="accordion-button" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false">
             <b>Citada #</b>{{dato.no}} &nbsp;
             <b>Fecha:</b> {{dato.fecha}} &nbsp;
-            <b>Hora: </b> {{dato.hora}}
+            <b>Hora: </b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
+            <button class="btn btn-sm btn-close" (click)="eliminar(i)"></button>
           </button>
         </h2>
         <div [id]="'collapseOne' + i" class="accordion-collapse collapse" [attr.data-bs-parent]="'#accordionExample' + i">
@@ -19,6 +20,7 @@
           </div>
         </div>
       </div>
+      <hr>
     </div>
   </div>
 
@@ -26,19 +28,19 @@
       <div class="accordion" id="accordionForm">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="bgc text-center shadow accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+            <button class="bgc text-center shadow accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
               <h4><b>Registro de Consultas</b></h4>
             </button>
           </h2>
-          <div id="collapseForm" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div id="collapseForm" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
             <div class="accordion-body">
               <form class="row fontText border-primary-subtle" [formGroup]="Fconsult">
                 <div class="col-md-6">
                   <label for="nombre" class="form-label"><b>Nombre:</b></label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" />
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" title="Este Campo es Obligatorio"/>
                     <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
                     <div *ngIf="Fconsult.get('nombre')?.invalid && (Fconsult.get('nombre')?.dirty || Fconsult.get('nombre')?.touched)">
-                      <div class="alert alert-danger mt-1" *ngIf="Fconsult.get('nombre')?.errors requiere">
+                      <div *ngIf="Fconsult.get('nombre')?.errors requiere">
                         Este campo es Obligatorio.
                       </div>
                     </div>
@@ -46,10 +48,10 @@
       
                 <div class="col-md-6">
                   <label for="fecha" class="form-label"><b>Fecha:</b></label>
-                  <input type="date" class="form-control" id="fecha" placeholder="Ingrese la fecha de la cita" formControlName="fecha" />
+                  <input type="date" class="form-control" id="fecha" placeholder="Ingrese la fecha de la cita" formControlName="fecha" title="Este Campo es Obligatorio"/>
                     <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
                     <div *ngIf="Fconsult.get('fecha')?.invalid && (Fconsult.get('fecha')?.dirty || Fconsult.get('fecha')?.touched)">
-                      <div class="alert alert-danger mt-1" *ngIf="Fconsult.get('fecha')?.errors requiere">
+                      <div *ngIf="Fconsult.get('fecha')?.errors requiere">
                         Este campo es Obligatorio.
                       </div>
                     </div>
@@ -57,10 +59,10 @@
       
                 <div class="col-md-12 my-2">
                   <label for="hora" class="form-label"><b>Hora:</b></label>
-                  <input type="time" class="form-control" id="hora" placeholder="Ingrese la hora de la cita" formControlName="hora" />
+                  <input type="time" class="form-control" id="hora" placeholder="Ingrese la hora de la cita" formControlName="hora" title="Este Campo es Obligatorio"/>
                     <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
                     <div *ngIf="Fconsult.get('hora')?.invalid && (Fconsult.get('hora')?.dirty || Fconsult.get('hora')?.touched)">
-                      <div class="alert alert-danger mt-1" *ngIf="Fconsult.get('hora')?.errors requiere">
+                      <div *ngIf="Fconsult.get('hora')?.errors requiere">
                         Este campo es Obligatorio.
                       </div>
                     </div>
@@ -69,10 +71,10 @@
                 <div class="col-md-12 my-2">
                   <label for="motivoConslt" class="form-label"><b>Motivo de la consulta:</b></label>
                   <!-- <input type="text" class="form-control" id="motivoConslt" placeholder="Ingrese el motivo de la consulta" formControlName="motivoConslt" /> -->
-                  <textarea class="form-control" id="motivoConslt" placeholder="Ingrese el motivo de la consulta" formControlName="motivoConslt" rows="3"></textarea>
+                  <textarea class="form-control" id="motivoConslt" placeholder="Ingrese el motivo de la consulta" formControlName="motivoConslt" rows="3" title="Este Campo es Obligatorio"></textarea>
                     <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
                     <div *ngIf="Fconsult.get('motivoConslt')?.invalid && (Fconsult.get('motivoConslt')?.dirty || Fconsult.get('motivoConslt')?.touched)">
-                      <div class="alert alert-danger mt-1" *ngIf="Fconsult.get('motivoConslt')?.errors requiere">
+                      <div *ngIf="Fconsult.get('motivoConslt')?.errors requiere">
                         Este campo es Obligatorio.
                       </div>
                     </div>
