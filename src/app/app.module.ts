@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,6 @@ import { HomeComponent } from './components/home/home.component';
        danger: '#da2d2d',
       }
     }),
-
   ],
   providers: [],
   bootstrap: [AppComponent]

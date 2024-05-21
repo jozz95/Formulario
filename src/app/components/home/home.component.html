@@ -7,9 +7,11 @@
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false">
             <b>Cita No:&nbsp;</b>{{dato.no}} &nbsp;
-            <b>Fecha:&nbsp;</b> {{dato.fecha}} &nbsp;
+            <b>Fecha:&nbsp;</b> {{dato.fecha | date:'dd/MMM/yyyy'}} &nbsp;
             <b>Hora:&nbsp;</b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
             <button class="btn btn-sm btn-close" (click)="eliminar(i)"></button>
+            &nbsp;
+            <button class="btn btn-sm" (click)="eliminar(i)"><i class="fa-solid fa-pen-to-square"></i></button>
           </button>
         </h2>
         <div [id]="'collapseOne' + i" class="accordion-collapse collapse" [attr.data-bs-parent]="'#accordionExample' + i">
@@ -79,6 +81,20 @@
                       </div>
                     </div>
                 </div>
+
+                <div class="col-md-12 my-2">
+                  <label for="motivoConslt" class="form-label"><b>Anexos:</b></label>
+                  <!-- <textarea class="form-control" id="motivoConslt" placeholder="Favor de subir los Anexos" formControlName="motivoConslt" rows="3" title="Subir Estudios"></textarea> -->
+                 <h5><b>Subir documentos anexos como podrian ser: estudios, electro´s, radiografias etc...</b></h5>
+                  <input type="file" >
+                    <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+                    <div *ngIf="Fconsult.get('motivoConslt')?.invalid && (Fconsult.get('motivoConslt')?.dirty || Fconsult.get('motivoConslt')?.touched)">
+                      <div *ngIf="Fconsult.get('motivoConslt')?.errors requiere">
+                        Este campo es Obligatorio.
+                      </div>
+                    </div>
+                </div>
+                <hr>
       
                 <div class="col-md-6 my-2 text-center">
                   <button type="submit" class="btn btn-md btn-info fontTextbtn" (click)="agregar()" (click)="addSuccess()" (click)="limpiarCampos()">Guardar Cita</button>
