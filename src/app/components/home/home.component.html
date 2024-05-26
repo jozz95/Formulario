@@ -11,7 +11,7 @@
             <b>Hora:&nbsp;</b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
             <button class="btn btn-sm btn-close" (click)="eliminar(i)"></button>
             &nbsp;
-            <button class="btn btn-sm" (click)="eliminar(i)"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="btn btn-sm" (click)="eliminar(i)"></button>
           </button>
         </h2>
         <div [id]="'collapseOne' + i" class="accordion-collapse collapse" [attr.data-bs-parent]="'#accordionExample' + i">
