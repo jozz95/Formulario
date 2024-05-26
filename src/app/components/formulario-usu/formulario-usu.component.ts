@@ -10,6 +10,7 @@ import { NgxToastService } from 'ngx-toast-notifier';
 export class FormularioUsuComponent {
   @Input() valor: string = '';
   mostrar: boolean = false;
+  mostrar2: boolean = false;
 
   Formulario!: FormGroup;
   bandera: boolean = false;
@@ -89,6 +90,11 @@ abrirModal(){
   this.bandera1 = !this.bandera1;
 }
 
+abrirModalAct(){
+  this.mostrar2 = !this.mostrar2;
+  this.bandera1 = !this.bandera1;
+}
+
 ocultarModal(){
   this.mostrar = !this.mostrar;
 }
@@ -108,8 +114,8 @@ addInfo(): void {
 }
 addWarning(): void {
   this.notiSvc.onWarning(
-    'Se dio un reset a el sistema',
-    'Se actualizarón los estatus'
+    'No se realizo la actualizacion de los campos',
+    'Se actualizarón cancelada'
   );
 }
 addDanger(): void {
@@ -117,6 +123,5 @@ addDanger(): void {
     'No se Guardo el Registro', 'Guardado Incorrecto'
   );
 }
-
 
 }
