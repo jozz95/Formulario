@@ -80,10 +80,6 @@ eliminarRegistro(indexR: number) {
     this.listDatos.splice(indexR, 1);
 }
 
-actualizarRegistro(){
-  
-}
-
 //modal
 abrirModal(){
   this.mostrar = !this.mostrar;
