@@ -11,7 +11,7 @@
             <b>Hora:&nbsp;</b> {{ formatHoraTo12Hour(dato.hora) }}&nbsp;
             <button class="btn btn-sm btn-close" (click)="eliminar(i)"></button>
             &nbsp;
-            <button class="btn btn-sm" (click)="eliminar(i)"></button>
+            <button type="button" (click)="abrirModalAct()" class="btn btn-sm btn-info float-end">Actualizar</button>
           </button>
         </h2>
         <div [id]="'collapseOne' + i" class="accordion-collapse collapse" [attr.data-bs-parent]="'#accordionExample' + i">
@@ -37,6 +37,18 @@
           <div id="collapseForm" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
             <div class="accordion-body">
               <form class="row fontText border-primary-subtle" [formGroup]="Fconsult">
+
+                <div class="col-md-12">
+                  <label for="nombre" class="form-label"><b>Seleccionar Usuario:</b></label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione un Usuario</option>
+                    <option value="1">Jossue Noe Martinez Cruz</option>
+                    <option value="2">Clarisbel Torres Mundo</option>
+                    <option value="3">Maria Isabel Cruz Mojica</option>
+                  </select>
+                  <hr>
+                </div>
+
                 <div class="col-md-6">
                   <label for="nombre" class="form-label"><b>Nombre:</b></label>
                   <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" title="Este Campo es Obligatorio"/>
@@ -85,7 +97,7 @@
                 <div class="col-md-12 my-2">
                   <label for="motivoConslt" class="form-label"><b>Anexos:</b></label>
                   <!-- <textarea class="form-control" id="motivoConslt" placeholder="Favor de subir los Anexos" formControlName="motivoConslt" rows="3" title="Subir Estudios"></textarea> -->
-                 <h5><b>Subir documentos anexos como podrian ser: estudios, electro´s, radiografias etc...</b></h5>
+                 <h5>Por favor adjunten estudios realizados con anterioridad.</h5>
                   <input type="file" >
                     <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
                     <div *ngIf="Fconsult.get('motivoConslt')?.invalid && (Fconsult.get('motivoConslt')?.dirty || Fconsult.get('motivoConslt')?.touched)">
@@ -114,6 +126,95 @@
       </div>    
     </div>
 
+
+    <!-- Modal Actualizar -->
+<div class=" modal fade modal-lg modal-dialog modal-dialog-centered" tabindex="-1" [ngClass]="{'show': mostrar2}" [ngStyle]="{'display': mostrar2 ? 'block' : 'none'}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center align-items-center bgc shadow">
+        <h2 class="modal-title" id="exampleModalLabel2"><b>Actualización del Usuario</b></h2>
+        <hr>
+      </div>
+      <div class="modal-body">
+        <form class="row fontText border-primary-subtle" [formGroup]="Fconsult">
+
+          <div class="col-md-12">
+            <label for="nombre" class="form-label"><b>Seleccionar Usuario:</b></label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Seleccione un Usuario</option>
+              <option value="1">Jossue Noe Martinez Cruz</option>
+              <option value="2">Clarisbel Torres Mundo</option>
+              <option value="3">Maria Isabel Cruz Mojica</option>
+            </select>
+            <hr>
+          </div>
+
+          <div class="col-md-6">
+            <label for="nombre" class="form-label"><b>Nombre:</b></label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el Nombre" formControlName="nombre" title="Este Campo es Obligatorio"/>
+              <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+              <div *ngIf="Fconsult.get('nombre')?.invalid && (Fconsult.get('nombre')?.dirty || Fconsult.get('nombre')?.touched)">
+                <div *ngIf="Fconsult.get('nombre')?.errors requiere">
+                  Este campo es Obligatorio.
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="fecha" class="form-label"><b>Fecha:</b></label>
+            <input type="date" class="form-control" id="fecha" placeholder="Ingrese la fecha de la cita" formControlName="fecha" title="Este Campo es Obligatorio"/>
+              <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+              <div *ngIf="Fconsult.get('fecha')?.invalid && (Fconsult.get('fecha')?.dirty || Fconsult.get('fecha')?.touched)">
+                <div *ngIf="Fconsult.get('fecha')?.errors requiere">
+                  Este campo es Obligatorio.
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-12 my-2">
+            <label for="hora" class="form-label"><b>Hora:</b></label>
+            <input type="time" class="form-control" id="hora" placeholder="Ingrese la hora de la cita" formControlName="hora" title="Este Campo es Obligatorio"/>
+              <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+              <div *ngIf="Fconsult.get('hora')?.invalid && (Fconsult.get('hora')?.dirty || Fconsult.get('hora')?.touched)">
+                <div *ngIf="Fconsult.get('hora')?.errors requiere">
+                  Este campo es Obligatorio.
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-12 my-2">
+            <label for="motivoConslt" class="form-label"><b>Motivo de la consulta:</b></label>
+            <!-- <input type="text" class="form-control" id="motivoConslt" placeholder="Ingrese el motivo de la consulta" formControlName="motivoConslt" /> -->
+            <textarea class="form-control" id="motivoConslt" placeholder="Ingrese el motivo de la consulta" formControlName="motivoConslt" rows="3" title="Este Campo es Obligatorio"></textarea>
+              <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+              <div *ngIf="Fconsult.get('motivoConslt')?.invalid && (Fconsult.get('motivoConslt')?.dirty || Fconsult.get('motivoConslt')?.touched)">
+                <div *ngIf="Fconsult.get('motivoConslt')?.errors requiere">
+                  Este campo es Obligatorio.
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-12 my-2">
+            <label for="motivoConslt" class="form-label"><b>Anexos:</b></label>
+            <!-- <textarea class="form-control" id="motivoConslt" placeholder="Favor de subir los Anexos" formControlName="motivoConslt" rows="3" title="Subir Estudios"></textarea> -->
+           <h5>Por favor adjunten estudios realizados con anterioridad.</h5>
+            <input type="file" >
+              <!-- Mostrar mensaje de error si el campo es inválido y se ha tocado -->
+              <div *ngIf="Fconsult.get('motivoConslt')?.invalid && (Fconsult.get('motivoConslt')?.dirty || Fconsult.get('motivoConslt')?.touched)">
+                <div *ngIf="Fconsult.get('motivoConslt')?.errors requiere">
+                  Este campo es Obligatorio.
+                </div>
+              </div>
+          </div>
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-danger" data-bs-dismiss="modal" (click)="addWarning()" (click)="abrirModalAct()">Cancelar</button>
+        <button type="button" class="btn btn-lg btn-info">Actualizar</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
 
     

@@ -10,6 +10,8 @@ import { NgxToastService } from 'ngx-toast-notifier';
 })
 export class HomeComponent {
   Fconsult!: FormGroup;
+  mostrar2: boolean = false;
+  bandera1: boolean = false;
 
     //en el constructor va todo lo que se ejecuta al iniciar el componente
     constructor(private fb: FormBuilder, public notiSvc: NgxToastService) {
@@ -53,6 +55,13 @@ export class HomeComponent {
     this.listRecord.splice(indexR, 1);
   }
 
+  addWarning(): void {
+    this.notiSvc.onWarning(
+      'No se realizo la actualizacion de los campos',
+      'Se actualizarón cancelada'
+    );
+  }
+
   limpiarCampos() {
     this.Fconsult.get('nombre')?.setValue(''),
       this.Fconsult.get('fecha')?.setValue(''),
@@ -87,4 +96,9 @@ export class HomeComponent {
     return `${formattedHour}:${formattedMinute} ${period}`;
   }
   
+  abrirModalAct(){
+    this.mostrar2 = !this.mostrar2;
+    this.bandera1 = !this.bandera1;
+  }
+
 }
